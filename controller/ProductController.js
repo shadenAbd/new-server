@@ -3,8 +3,8 @@ const categoryModel = require("../models/ProductModel");
 
 const createManyProducts = (req, res) => {
     // const { AllCategories } = req.body;
-    const prudacts = req.body.map((p)=>{
-        p.category=p.category.name
+    const prudacts = req.body.map((p) => {
+        p.category = p.category.name
         p.flashSale = true;
 
         return p
@@ -30,8 +30,8 @@ const createManyProducts = (req, res) => {
 
 const createOneProduct = (req, res) => {
     // const { AllCategories } = req.body;
-  
-     const product = req.body;
+
+    const product = req.body;
 
     categoryModel.create(product)
         .then((data) => {
@@ -51,6 +51,26 @@ const createOneProduct = (req, res) => {
         });
 }
 
+const FindProducts = (req, res) => {
+    const query = req.body;
+    categoryModel.find(query)
+        .then((data) => {
+            // console.log("data", data);
+            res.status(200).json({
+                message: " found successfully",
+                data: data,
+                success: true,
+            });
+        })
+        .catch((err) => {
+            console.log("err", err);
+            res.status(500).json({
+                message: "Error",
+                error: err,
+            });
+        });
+}
+
 const Test = (req, res) => {
     res.status(200).json({
         message: " test",
@@ -62,5 +82,6 @@ module.exports = {
     createManyProducts,
     Test,
     createOneProduct,
+    FindProducts,
 }
 
