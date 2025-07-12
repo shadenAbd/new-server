@@ -29,7 +29,7 @@ const getUser = (req, res) => {
     UserModel.findOne({ phone }).then((data) => {
         console.log("data", data);
         res.status(200).json({
-            message: "User added successfully",
+            message: "done successfully",
             data: data,
             success: true,
         });

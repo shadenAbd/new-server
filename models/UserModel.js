@@ -22,6 +22,7 @@ const Users = new mongoose.Schema({
         type: String,
         required: false,
     },
+    
 }, { timestamps: true })
 const UserModel = mongoose.model('Users', Users)
 
