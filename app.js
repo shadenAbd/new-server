@@ -7,6 +7,9 @@ app.use(express.json());
 
 const router = require("./routes/globalRoute")
 connectToDatabase()
+app.get("/",(req,res)=>{
+    res.status(200).json({message:"sever is live"})
+})
 app.use("/", router);
 
 
