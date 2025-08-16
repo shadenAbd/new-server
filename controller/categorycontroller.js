@@ -21,6 +21,27 @@ const createManyCategories = (req, res) => {
         });
 }
 
+
+const FindCategory = (req, res) => {
+    const query = req.body;
+    categoryModel.find(query)
+        .then((data) => {
+            // console.log("data", data);
+            res.status(200).json({
+                message: " found successfully",
+                data: data,
+                success: true,
+            });
+        })
+        .catch((err) => {
+            console.log("err", err);
+            res.status(500).json({
+                message: "Error",
+                error: err,
+            });
+        });
+}
+
 const Test = (req, res) => {
     res.status(200).json({
         message: " test",
@@ -30,6 +51,7 @@ const Test = (req, res) => {
 
 module.exports = {
     createManyCategories,
-    Test
+    Test,
+    FindCategory,
 }
 
